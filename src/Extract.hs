@@ -2,20 +2,12 @@
 
 module Extract where
 
-import qualified Data.Text            as T
+import           Icon
 import           Network.HTTP.Conduit (simpleHttp)
 import           Text.HTML.DOM        (parseLBS)
 import           Text.XML.Cursor      (Cursor, attribute, attributeIs, child,
                                        content, element, fromDocument, ($//),
                                        (&.//), (&//), (&|), (>=>))
-
-data IconType = FavIcon | AppleIcon deriving (Show)
-
-data Icon = Icon { source   :: T.Text
-                 , iconType :: IconType
-                 } deriving (Show)
-
-processData = putStrLn . T.unpack . T.concat
 
 cursorFor u = do
   page <- simpleHttp u
