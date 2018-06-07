@@ -12,6 +12,9 @@ import qualified Web.Scotty                           as S
 
 routes :: S.ScottyM ()
 routes = do
+  S.get "/" $ do
+    S.file "index.html"
+
   S.post "/" $ do
     url <- S.param "url"
     icons <- liftIO (getIcons url)
