@@ -3,10 +3,12 @@
 
 module App (runApp, app) where
 
-import           Control.Monad.IO.Class (liftIO)
+import           Control.Monad.IO.Class               (liftIO)
 import           Extract
-import           Network.Wai            (Application)
-import qualified Web.Scotty             as S
+import           Network.Wai                          (Application)
+import           Network.Wai.Middleware.RequestLogger
+import qualified Web.Scotty                           as S
+
 
 routes :: S.ScottyM ()
 routes = do
@@ -19,4 +21,6 @@ app :: IO Application
 app = S.scottyApp routes
 
 runApp :: IO ()
-runApp = S.scotty 4000 routes
+runApp = S.scotty 4000 $ do
+  S.middleware logStdoutDev
+  routes
