@@ -7,6 +7,7 @@ import           Control.Monad.IO.Class               (liftIO)
 import           Extract
 import           Network.Wai                          (Application)
 import           Network.Wai.Middleware.RequestLogger
+import           Network.Wai.Middleware.Static
 import qualified Web.Scotty                           as S
 
 
@@ -26,4 +27,5 @@ app = S.scottyApp routes
 runApp :: IO ()
 runApp = S.scotty 4000 $ do
   S.middleware logStdoutDev
+  S.middleware $ staticPolicy (noDots >-> addBase "static")
   routes
