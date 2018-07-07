@@ -10,6 +10,8 @@ import           Network.Wai.Middleware.RequestLogger
 import           Network.Wai.Middleware.Static
 import qualified Web.Scotty                           as S
 
+import           System.Environment                   (lookupEnv)
+
 
 routes :: S.ScottyM ()
 routes = do
@@ -25,7 +27,17 @@ app :: IO Application
 app = S.scottyApp routes
 
 runApp :: IO ()
-runApp = S.scotty 4000 $ do
-  S.middleware logStdoutDev
-  S.middleware $ staticPolicy (noDots >-> addBase "static")
-  routes
+runApp = do
+  p <- getPort
+  S.scotty p $ do
+    S.middleware logStdoutDev
+    S.middleware $ staticPolicy (noDots >-> addBase "static")
+    routes
+
+getPort :: IO Int
+getPort = do
+  m <- lookupEnv "PORT"
+  let p = case m of
+        Nothing -> 4000
+        Just s  -> read s
+  return p
