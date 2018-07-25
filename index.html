@@ -18,16 +18,16 @@
             </h1>
           </div>
           <div class="wrap">
-            <div class ="control">
-            <input is-primary v-model="url" />
-            </div>
             <div class="control">
-            <button v-on:click="getIcons">
-              Extract
-            </button>
+              <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url ">
+            </div>
+
+            <div class="control">
+              <button class="button is-primary" v-on:click="getIcons">
+                Extract
+              </button>
             </div>
           </div>
-
           <div v-for="result in results">
             <p>{{ result.iconType }}</p>
             <img :src="result.source" />
