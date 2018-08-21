@@ -6,15 +6,6 @@ h1.title{
     text-align: center;
 }
 
-.vertical-center{
-    position: absolute;
-    height: 500px;
-}
-
-.vertical{
-    position: relative;
-    top:50%;
-}
 .input.is-primary{
   width:275px;
   margin-left:20px;
