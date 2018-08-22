@@ -10,31 +10,40 @@
   </head>
   <body>
     <div id="app">
-      <div class="container">
-        <div class="center">
-          <div class="heading">
-            <h1 class="title">
-              Download Icons Image
-            </h1>
-          </div>
-          <div class="wrap">
-            <div class="control">
-              <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url ">
+      <div class="container flex">
+        <section class="hero is-fullheight">
+          <div class="hero-body">
+            <div class="container">
+              <div class="vertical">
+                <h1 class="title">Icon Extractor</h1>
+                <div class="columns is-centered">
+                  <div class="field is-grouped">
+                    <div class="control">
+                      <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url ">
+                    </div>
+                    <div class="control">
+                      <button class="button is-primary" v-on:click="getIcons">
+                        Extract
+                      </button>
+                    </div>
+                  </div>
+                  <!-- field ends here-->
+                  <div v-for="result in results">
+                    <p>{{ result.iconType }}</p>
+                    <img :src="result.source" />
+                  </div>
+                </div>
+                <!-- columns ends here -->
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div class="control">
-              <button class="button is-primary" v-on:click="getIcons">
-                Extract
-              </button>
-            </div>
-          </div>
-          <div v-for="result in results">
-            <p>{{ result.iconType }}</p>
-            <img :src="result.source" />
-          </div>
-        </div><!-- center ends here -->
-      </div><!-- container ends here -->
-    </div><!-- app ends here-->
+        <!-- vertical ends here -->
+      </div>
+      <!-- container-->
+    </div>
+    <!-- app ends here-->
   </body>
   <script src="js/app.js"></script>
 </html>
