@@ -17,20 +17,24 @@
               <div class="vertical">
                 <h1 class="title">Icon Extractor</h1>
                 <div class="columns is-centered">
-                  <div class="field is-grouped">
-                    <div class="control">
-                      <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url ">
-                    </div>
-                    <div class="control">
-                      <button class="button is-primary" v-on:click="getIcons">
-                        Extract
-                      </button>
-                    </div>
+                  <div v-if="loading" class="loader">
                   </div>
-                  <!-- field ends here-->
-                  <div v-for="result in results">
-                    <p>{{ result.iconType }}</p>
-                    <img :src="result.source" />
+                  <div v-else>
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url ">
+                      </div>
+                      <div class="control">
+                        <button class="button is-primary" v-on:click="getIcons">
+                          Extract
+                        </button>
+                      </div>
+                    </div>
+                    <!-- field ends here-->
+                    <div v-for="result in results">
+                      <p>{{ result.iconType }}</p>
+                      <img :src="result.source" />
+                    </div>
                   </div>
                 </div>
                 <!-- columns ends here -->
