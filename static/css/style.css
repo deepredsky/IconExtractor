@@ -1,12 +1,7 @@
-h1.title{
+h1.title.main{
     text-transform: capitalize;
     font-size: 2.5rem;
     color:#20B2AA;
     margin-bottom: 30px;
     text-align: center;
-}
-
-.input.is-primary{
-  width:275px;
-  margin-left:20px;
 }
