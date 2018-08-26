@@ -3,6 +3,8 @@ const vm = new Vue({
   data: {
     url: null,
     loading: false,
+    error: false,
+    completed: false,
     results: [],
   },
   methods: {
@@ -28,7 +30,7 @@ const vm = new Vue({
         .then(res => res.json())
         .catch(() => (this.results = []))
         .then(icons => (this.results = icons))
-        .finally(() => this.loading = false)
+        .finally(() => (this.loading = false, this.completed = true))
     },
   },
 })
