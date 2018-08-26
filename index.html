@@ -21,20 +21,20 @@
                   </div>
                   <div v-else>
                     <form v-on:submit.prevent="getIcons">
-                        <div class="field is-grouped">                    
+                      <div class="field is-grouped">
                         <div class="control">
-                            <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url " v-bind:class="{'is-danger':error}">  
-                            <p class="help is-danger" v-if="error">This link is invalid</p>
+                          <input class="input is-primary" type="text" placeholder="Insert website url" v-model="url " v-bind:class="{'is-danger':error}">
+                          <p class="help is-danger" v-if="error">This link is invalid</p>
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-primary">
+                          <button type="submit" class="button is-primary">
                             Extract
-                            </button>
+                          </button>
                         </div>
-                        </div>
+                      </div>
                     </form>
                     <!-- field ends here-->
-                    <div v-if="completed">
+                    <div v-if="completed" class="results">
                       <div v-if="results.length > 0">
                         <div v-for="result in results">
                           <p>{{ result.iconType }}</p>
@@ -62,5 +62,5 @@
     </div>
     <!-- app ends here-->
   </body>
-  <script src="static/js/app.js"></script>
+  <script src="js/app.js"></script>
 </html>

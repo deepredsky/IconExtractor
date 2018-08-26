@@ -5,3 +5,7 @@ h1.title.main{
     margin-bottom: 30px;
     text-align: center;
 }
+
+.results {
+  padding: 20px 0;
+}
